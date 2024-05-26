@@ -1,0 +1,45 @@
+do show vlan---------to check vlan
+
+vlan 2--------------create vlan
+name it==========assign name to vlan
+
+how to add interface in vlan
+
+interface fa0/1
+swichport access vlan 2
+exit
+interface range fa0/6-9-------add multiple interface at a time
+
+Switch(config)#int range fa0/10-14,fa0/16-20---------remove perticular port from range.
+
+ no vlan 5-------delete vlan
+
+
+on another switch 
+without trunk you cant communicate with same vlan in first switch
+
+do trunk cmd on switch
+interface fa0/10
+switchport mode trunk
+ex
+now create same vlan on another switch 
+					vtp mode
+
+________________________________________________________________
+switch 1
+Switch(config)#vtp mode server 
+Switch(config)#vtp domain jet.com
+Switch(config)#vtp password 123
+
+Switch(config)#int fa0/2
+Switch(config-if)#switchport mode trunk
+
+switch 3
+Switch(config)#vtp mode client
+Switch(config)#vtp domain jet.com
+Switch(config)#vtp password 123
+
+switch 2
+Switch(config)#vtp mode transparent 
+Switch(config)#vtp domain jet.com
+Switch(config)#vtp password 123
